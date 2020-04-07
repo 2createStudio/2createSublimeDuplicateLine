@@ -5,7 +5,7 @@ class DuplicateLineSelectorCommand(sublime_plugin.TextCommand):
         for region in self.view.sel():
             if region.empty():
                 line = self.view.line(region)
-                
+
                 is_css = self.view.match_selector( self.view.sel()[0].b, 'source.css' )
 
                 if is_css:
@@ -23,6 +23,6 @@ class DuplicateLineSelectorCommand(sublime_plugin.TextCommand):
 
                         test = self.view.extract_scope(pt)
                         self.view.insert(edit, 0, test[0])
-                else : 
+                else :
                         line_contents = self.view.substr(line) + '\n'
                         self.view.insert(edit, line.begin(), line_contents)
